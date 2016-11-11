@@ -4,9 +4,9 @@ class Restaurant
 
 attr_reader :order_cart, :total_dishes, :menu, :total
 
-  def initialize
+  def initialize(menu = Menu.new)
     @order_cart = []
-    @menu = Menu.new
+    @menu = menu
     @total = 0
   end
 
@@ -26,10 +26,8 @@ attr_reader :order_cart, :total_dishes, :menu, :total
 
   def order
     fail "You submitted an empty order" if @order_cart == []
-    t = Time.new + 60*60
-    g = t.strftime("%H:%M")
-    message = "Thank you! Your order was placed and will be delivered before " + g
-
+    text = Text.new
+    text.send
   end
 
 end

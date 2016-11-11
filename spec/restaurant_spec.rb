@@ -40,12 +40,4 @@ it 'won\'t let you place an empty order' do
 end
 
 
-it 'returns a message that denotes order will be delivered in an hour' do
-  restaurant.select("shishito peppers")
-  t = Time.new + 60*60
-  hour_and_minute = t.hour.to_s + ":" + t.min.to_s
-  m = "Thank you! Your order was placed and will be delivered before "
-  expect(restaurant.order).to eq (m + hour_and_minute)
-end
-
 end
