@@ -4,7 +4,7 @@ describe Menu do
   let(:menu){described_class.new}
 
   it 'should include certain menu items' do
-    expect(menu.items).to include("boquerones", "tortilla espanola")
+    expect(menu.items).to include({"boquerones" => 5}, {"tortilla espanola" => 5})
   end
 
   it 'should include item with corresponding prices' do

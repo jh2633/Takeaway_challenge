@@ -1,11 +1,12 @@
 require_relative 'menu'
 require_relative 'text'
+require_relative 'cart'
 class Restaurant
 
 attr_reader :order_cart, :total_dishes, :menu, :total
 
-  def initialize(menu = Menu.new)
-    @order_cart = []
+  def initialize(menu = Menu.new, cart = Cart.new)
+    @cart = cart
     @menu = menu
     @total = 0
   end
@@ -17,11 +18,15 @@ attr_reader :order_cart, :total_dishes, :menu, :total
   def select(dish)
     fail "That item isn't on the menu" if menu.price(dish).nil?
     @total += menu.price(dish)
-    @order_cart << dish
+    @order_cart.add(dish)
+  end
+
+  def remove(dish)
+    @order_cart.remove(dish)
   end
 
   def total_dishes
-    order_cart.length
+    @order_cart.display
   end
 
   def order
